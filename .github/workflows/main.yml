@@ -2,7 +2,8 @@ name: Deploy TIMONEY Web to Vercel
 
 on:
 push:
-branches: [main]
+branches:
+- main
 workflow_dispatch:
 
 jobs:
@@ -29,7 +30,7 @@ run: flutter build web --release
 - name: Setup Node
 uses: actions/setup-node@v4
 with:
-node-version: 20
+node-version: "20"
 
 - name: Install Vercel CLI
 run: npm i -g vercel
