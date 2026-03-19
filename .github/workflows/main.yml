@@ -1,4 +1,8 @@
-﻿name: Deploy TIMONEY Web to Vercel
+﻿cd C:\dev\TIMONEY
+mkdir .github\workflows -Force
+
+@'
+name: Deploy TIMONEY Web to Vercel
 
 on:
 push:
@@ -34,3 +38,4 @@ VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 env:
 VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
 VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+'@ | Set-Content .github\workflows\main.yml -Encoding UTF8
