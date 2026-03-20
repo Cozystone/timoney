@@ -1,16 +1,16 @@
 ﻿param(
 [string]$Branch = "main",
-[int]$Port = 7401,
 [int]$SyncSeconds = 20
 )
 
 Set-Location C:\dev\TIMONEY
-
 Write-Host "== Timevest Dev Auto =="
+
 git checkout $Branch | Out-Null
 git pull origin $Branch
 
-Start-Process powershell -ArgumentList "-NoExit","-Command","cd C:\dev\TIMONEY; flutter clean; flutter pub get; flutter run -d web-server --web-hostname 127.0.0.1 --web-port $Port"
+# 포트 충돌 방지: web-port 0 (자동 포트)
+Start-Process powershell -ArgumentList "-NoExit","-Command","cd C:\dev\TIMONEY; flutter clean; flutter pub get; flutter run -d web-server --web-hostname 127.0.0.1 --web-port 0"
 
 while ($true) {
 Set-Location C:\dev\TIMONEY
