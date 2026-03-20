@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import '../../core/design/app_colors.dart';
 import '../../core/widgets/mini_line_chart.dart';
 import '../../data/mock/timevest_mock_data.dart';
+import '../../core/constants/app_version.dart';
+
 
 class HomeScreen extends StatelessWidget {
 const HomeScreen({super.key});
@@ -14,7 +16,21 @@ backgroundColor: AppColors.bg,
 navigationBar: CupertinoNavigationBar(
 backgroundColor: AppColors.bg,
 border: null,
-middle: const Text('Timevest', style: TextStyle(fontWeight: FontWeight.w700)),
+middle: Row(
+mainAxisSize: MainAxisSize.min,
+children: [
+const Text('Timevest', style: TextStyle(fontWeight: FontWeight.w700)),
+const SizedBox(width: 6),
+Text(
+kAppVersionLabel,
+style: const TextStyle(
+fontSize: 12,
+color: AppColors.subText,
+fontWeight: FontWeight.w600,
+),
+),
+],
+),
 trailing: CupertinoButton(
 padding: EdgeInsets.zero,
 onPressed: () => _showProfileSheet(context),
